@@ -14,6 +14,8 @@
 #define HMP4_JOIN(...) \
 	BOOST_PP_CAT(HMP4_JOIN_IMPL_, HMP4_COUNT(__VA_ARGS__))(__VA_ARGS__)
 
+#define HMP4_JOIN_IMPL_0(...)
+
 #define HMP4_JOIN_IMPL_1(_1) \
 	_1
 #define HMP4_JOIN_IMPL_2(_1, _2) \

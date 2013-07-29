@@ -7,6 +7,5 @@
 
 #include <hmp4/directive.hpp>
 
-//HMP4_PP_DEFINE(a,b,c)
-//HMP4_CG_GRID_BLOCKSIZE(3, 3)
-HMP4_COUNT()
+HMP4_PP_DEFINE(a,b,c)
+HMP4_CG_GRID_BLOCKSIZE(3, 3)
