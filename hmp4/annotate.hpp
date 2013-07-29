@@ -21,7 +21,7 @@
 #include <boost/preprocessor/tuple/rem.hpp>
 #include <boost/preprocessor/tuple/size.hpp>
 #include <boost/preprocessor/tuple/to_seq.hpp>
-#include <hmp4/annotate.hpp>
+#include <hmp4/directive.hpp>
 
 #define HMP4_ANNOTATE_LOOP(tuple) \
 	HMP4_ANNOTATE_LOOP_IMPL_1(__COUNTER__, tuple)

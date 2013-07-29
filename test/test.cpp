@@ -6,7 +6,7 @@
 */
 
 #include <hmp4/annotate.hpp>
-#include <hmp4/directive.hpp>
+#include <hmp4/tuple.hpp>
 
 //HMP4_PP_DEFINE(a,b,c)
 //HMP4_CG_GRID_BLOCKSIZE(3, 3)
@@ -20,7 +20,8 @@
 		((unroll, 8, guarded), (noParallel))   \
 	)
 
+//HMP4_ANNOTATE_LOOP(LOOP_A_PARAMETERS)
+//HMP4_ANNOTATE_LOOP(LOOP_A_PARAMETERS)
+//HMP4_ANNOTATE_LOOP(LOOP_A_PARAMETERS)
 
-HMP4_ANNOTATE_LOOP(LOOP_A_PARAMETERS)
-HMP4_ANNOTATE_LOOP(LOOP_A_PARAMETERS)
-HMP4_ANNOTATE_LOOP(LOOP_A_PARAMETERS)
+HMP4_TUPLE_CAT((0, 1), (1, 2), (2, 3), (3, 4), (4, 5))
