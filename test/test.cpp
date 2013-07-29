@@ -5,7 +5,7 @@
 ** Contact:	_@adityaramesh.com
 */
 
-#include <hmp4/cg.hpp>
+#include <hmp4/directive.hpp>
 
-HMP4_CG_DEFINE(a,b,c)
+HMP4_PP_DEFINE(a,b,c)
 HMP4_CG_GRID_BLOCKSIZE(3, 3)
