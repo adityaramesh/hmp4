@@ -38,8 +38,18 @@
 ** Loop properties.
 */
 
+#define HMP4_CG_GRIDIFY(...) \
+	HMP4_DIRECTIVE(hmppcg gridify, __VA_ARGS__)
+
+// XXX
+//#define HMP4_CG_NO_PARALLEL(...) \
+//	HMP4_DIRECTIVE(hmppcg noParallel, __VA_ARGS__)
+
 #define HMP4_CG_GRID_BLOCKSIZE(a, b) \
 	HMP4_DIRECTIVE(hmppcg grid blocksize, HMP4_MAKE_DIMENSIONS(a, b))
+
+#define HMP4_CG_SET(...) \
+	HMP4_DIRECTIVE(hmppcg set, HMP4_MAKE_DIMENSIONS(__VA_ARGS__))
 
 /*
 ** Loop transformations.
