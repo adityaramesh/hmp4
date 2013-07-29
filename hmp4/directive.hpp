@@ -41,8 +41,11 @@
 #define HMP4_CG_GRIDIFY(...) \
 	HMP4_DIRECTIVE(hmppcg gridify, __VA_ARGS__)
 
+#define HMP4_CG_PARALLEL(...) \
+	HMP4_DIRECTIVE(hmppcg parallel, __VA_ARGS__)
+
 #define HMP4_CG_NO_PARALLEL \
-	HMP4_DIRECTIVE(hmppcg noParallel, __VA_ARGS__)
+	HMP4_DIRECTIVE(hmppcg noParallel)
 
 #define HMP4_CG_GRID_BLOCKSIZE(a, b) \
 	HMP4_DIRECTIVE(hmppcg grid blocksize, HMP4_MAKE_DIMENSIONS(a, b))
@@ -75,8 +78,15 @@
 #define HMP4_CG_TILE(...) \
 	HMP4_DIRECTIVE(hmppcg tile, __VA_ARGS__)
 
-#define HMP4_CG_NATIVE(...) \
-	HMP4_DIRECTIVE(hmppcg native, __VA_ARGS__)
+/*
+** Native functions.
+*/
+
+#define HMP4_CG_NATIVE(target, function) \
+	HMP4_DIRECTIVE(hmppcg native(target) function,)
+
+#define HMP4_CG_INCLUDE(file) \
+	HMP4_DIRECTIVE(hmppcg include(file))
 
 /*
 ** Preprocessor directives.
