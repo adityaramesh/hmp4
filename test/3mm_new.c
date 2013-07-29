@@ -16,28 +16,35 @@
 #include <stdarg.h>
 #include <math.h>
 
-#include "../../../common/polybenchUtilFuncts.h"
+// Note the extra headers.
+#include <hmp4/annotate.hpp>
+#include <hmp4/tuple.hpp>
 
-#define LOOP_A_PARAMETERS                                           \
-	(                                                           \
-		( HMP4_CG_GRID_BLOCKSIZE(32, 8), HMP4_PARALLEL() ), \
-		( HMP4_CG_PARALLEL() ),                             \
-		( HMP4_CG_UNROLL(8, guarded), HMP4_CG_NO_PARALLEL ) \
+//#include "../../../common/polybenchUtilFuncts.h"
+
+#define LOOP_A_PARAMETERS                              \
+	(                                              \
+		((grid blocksize, 32, 8), (parallel)), \
+		((parallel)),                          \
+		((unroll, 8, guarded), (noParallel))   \
 	)
 
-#define LOOP_B_PARAMETERS                                           \
-	(                                                           \
-		( HMP4_CG_GRID_BLOCKSIZE(32, 8), HMP4_PARALLEL() ), \
-		( HMP4_CG_PARALLEL() ),                             \
-		( HMP4_CG_UNROLL(8, guarded), HMP4_CG_NO_PARALLEL ) \
+#define LOOP_B_PARAMETERS                              \
+	(                                              \
+		((grid blocksize, 32, 8), (parallel)), \
+		((parallel)),                          \
+		((unroll, 8, guarded), (noParallel))   \
 	)
 
-#define LOOP_C_PARAMETERS                                           \
-	(                                                           \
-		( HMP4_CG_GRID_BLOCKSIZE(32, 8), HMP4_PARALLEL() ), \
-		( HMP4_CG_PARALLEL() ),                             \
-		( HMP4_CG_UNROLL(8, guarded), HMP4_CG_NO_PARALLEL ) \
+#define LOOP_C_PARAMETERS                              \
+	(                                              \
+		((grid blocksize, 32, 8), (parallel)), \
+		((parallel)),                          \
+		((unroll, 8, guarded), (noParallel))   \
 	)
+
+#define LOOP_PARAMETERS \
+	HMP4_TUPLE_CAT(LOOP_A_PARAMETERS, LOOP_B_PARAMETERS, LOOP_C_PARAMETERS)
 
 //define the error threshold for the results "not matching"
 #define PERCENT_DIFF_ERROR_THRESHOLD 0.05
@@ -64,18 +71,15 @@ void threeMMloopa(DATA_TYPE a[NI][NK], DATA_TYPE b[NK][NJ], DATA_TYPE e[NI][NJ])
 	int i, j, k;
 
 	/* E := A*B */
-	#pragma hmppcg grid blocksize 32 X 8
-
-	#pragma hmppcg parallel
+	HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 	for (i = 0; i < NI; i++)
 	{
-		#pragma hmppcg parallel
+		HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 		for (j = 0; j < NJ; j++)
 		{
 			e[i][j] = 0;
 
-			#pragma hmppcg unroll 8, guarded
-			#pragma hmppcg noParallel
+			HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 			for (k = 0; k < NK; ++k)
 			{
 				e[i][j] += a[i][k] * b[k][j];
@@ -90,18 +94,15 @@ void threeMMloopb(DATA_TYPE c[NJ][NM], DATA_TYPE d[NM][NL], DATA_TYPE f[NJ][NL])
 	int i, j, k;
 
 	/* F := C*D */
-	#pragma hmppcg grid blocksize 32 X 8
-
-	#pragma hmppcg parallel
+	HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 	for (i = 0; i < NJ; i++)
 	{
-		#pragma hmppcg parallel
+		HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 		for (j = 0; j < NL; j++)
 		{
 			f[i][j] = 0;
 
-			#pragma hmppcg unroll 8, guarded          
-			#pragma hmppcg noParallel
+			HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 			for (k = 0; k < NM; ++k)
 			{
 				f[i][j] += c[i][k] * d[k][j];
@@ -116,18 +117,15 @@ void threeMMloopc(DATA_TYPE e[NI][NJ], DATA_TYPE f[NJ][NL], DATA_TYPE g[NI][NL])
 	int i, j, k;
 
 	/* G := E*F */
-	#pragma hmppcg grid blocksize 32 X 8
-
-	#pragma hmppcg parallel
+	HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 	for (i = 0; i < NI; i++)
 	{
-		#pragma hmppcg parallel
+		HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 		for (j = 0; j < NL; j++)
 		{
 			g[i][j] = 0;
 
-			#pragma hmppcg unroll 8, guarded          
-			#pragma hmppcg noParallel
+			HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
 			for (k = 0; k < NJ; ++k)
 			{
 				g[i][j] += e[i][k] * f[k][j];
