@@ -58,12 +58,12 @@ can be multiple loops in a program, and multiple HMPP directives corresponding
 to each loop. The tuple corresponding to the previous code listing is given
 below:
 
-	#define LOOP_PARAMETERS                        \
-	(                                              \
-		((grid blocksize, 32, 8), (parallel)), \
-		((parallel)),                          \
-		((unroll, 8, guarded), (noParallel))   \
-	)
+	#define LOOP_PARAMETERS                                            \
+		(                                                          \
+			("hmppcg grid blocksize 32x8", "hmppcg parallel"), \
+			("hmppcg parallel"),                               \
+			("hmppcg unroll 8, guarded", "hmppcg noParallel")  \
+		)
 
 Using the `HMP4_ANNOTATE_LOOP` macro, the new code listing given below will
 expand to the original code listing.
@@ -92,25 +92,25 @@ maintain legibility, it is convenient to define separate loop parameter tuples
 for each function in your source file. The `HMP4_TUPLE_CAT` macro is useful in
 this regard; its use is demonstrated below.
 
-	#define LOOP_A_PARAMETERS                              \
-		(                                              \
-			((grid blocksize, 32, 8), (parallel)), \
-			((parallel)),                          \
-			((unroll, 8, guarded), (noParallel))   \
+	#define LOOP_A_PARAMETERS                                          \
+		(                                                          \
+			("hmppcg grid blocksize 32x8", "hmppcg parallel"), \
+			("hmppcg parallel"),                               \
+			("hmppcg unroll 8, guarded", "hmppcg noParallel")  \
 		)
 
-	#define LOOP_B_PARAMETERS                              \
-		(                                              \
-			((grid blocksize, 32, 8), (parallel)), \
-			((parallel)),                          \
-			((unroll, 8, guarded), (noParallel))   \
+	#define LOOP_B_PARAMETERS                                          \
+		(                                                          \
+			("hmppcg grid blocksize 32x8", "hmppcg parallel"), \
+			("hmppcg parallel"),                               \
+			("hmppcg unroll 8, guarded", "hmppcg noParallel")  \
 		)
 
-	#define LOOP_C_PARAMETERS                              \
-		(                                              \
-			((grid blocksize, 32, 8), (parallel)), \
-			((parallel)),                          \
-			((unroll, 8, guarded), (noParallel))   \
+	#define LOOP_C_PARAMETERS                                          \
+		(                                                          \
+			("hmppcg grid blocksize 32x8", "hmppcg parallel"), \
+			("hmppcg parallel"),                               \
+			("hmppcg unroll 8, guarded", "hmppcg noParallel")  \
 		)
 
 	#define LOOP_PARAMETERS \
