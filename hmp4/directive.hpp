@@ -11,6 +11,7 @@
 #include <boost/preprocessor/facilities/expand.hpp>
 #include <hmp4/hash.hpp>
 #include <hmp4/join.hpp>
+#include <hmp4/pragma.hpp>
 
 /*
 ** Low-level directive functions.
@@ -32,7 +33,7 @@
 	HMP4_DIRECTIVE_IMPL_2(a)
 
 #define HMP4_DIRECTIVE_IMPL_2(a) \
-	_Pragma(#a)
+	HMP4_PRAGMA(#a)
 
 /*
 ** Loop properties.

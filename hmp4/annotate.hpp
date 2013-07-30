@@ -21,7 +21,7 @@
 #include <boost/preprocessor/tuple/rem.hpp>
 #include <boost/preprocessor/tuple/size.hpp>
 #include <boost/preprocessor/tuple/to_seq.hpp>
-#include <hmp4/directive.hpp>
+#include <hmp4/pragma.hpp>
 
 #define HMP4_ANNOTATE_LOOP(tuple) \
 	HMP4_ANNOTATE_LOOP_IMPL_1(__COUNTER__, tuple)
@@ -55,21 +55,7 @@
 		)                                                \
 	)
 
-#ifndef BOOST_PP_SEQ_ENUM_0
-	#define BOOST_PP_SEQ_ENUM_0
-#endif
-
-#define HMP4_MACRO_IMPL_1(tuple)                                             \
-	HMP4_DIRECTIVE(                                                      \
-		hmppcg BOOST_PP_TUPLE_ELEM(                                  \
-			BOOST_PP_TUPLE_SIZE(tuple),                          \
-			0,                                                   \
-			tuple                                                \
-		),                                                           \
-		BOOST_PP_SEQ_ENUM(                                           \
-			BOOST_PP_SEQ_POP_FRONT(BOOST_PP_TUPLE_TO_SEQ(tuple)) \
-		)                                                            \
-	)
+#define HMP4_MACRO_IMPL_1(a) HMP4_PRAGMA(a)
 
 #define HMP4_ANNOTATE_LOOP_IMPL_2(tuple)                \
 	BOOST_PP_FOR(                                   \
