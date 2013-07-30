@@ -61,7 +61,7 @@
 
 #define HMP4_MACRO_IMPL_1(tuple)                                             \
 	HMP4_DIRECTIVE(                                                      \
-		BOOST_PP_TUPLE_ELEM(                                         \
+		hmppcg BOOST_PP_TUPLE_ELEM(                                  \
 			BOOST_PP_TUPLE_SIZE(tuple),                          \
 			0,                                                   \
 			tuple                                                \
