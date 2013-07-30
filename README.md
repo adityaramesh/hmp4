@@ -45,18 +45,13 @@ We will modify the following listing to use the macros defined by `hmp4`.
 		}
 	}
 
-The `hmp4` library requires a data structure that defines the HMPP directives to
-be invoked before each loop. This data structure is supplied as the argument to
-the `HMP4_ANNOTATE_LOOP` macro, which is invoked before each loop that is
-associated with HMPP directives. The macro reads from the data structure the
-names and the parameters of the HMPP directives associated with each loop, and
-declares the HMPP directives for you.
-
-These names and parameters of these directives are provided in a tuple of tuple
-of tuple of loop parameters. The data structure is triply nested because there
-can be multiple loops in a program, and multiple HMPP directives corresponding
-to each loop. The tuple corresponding to the previous code listing is given
-below:
+The `hmp4` library requires a data structure that contains the contents of the
+HMPP directives associated with each loop. This data structure is supplied as
+the argument to the `HMP4_ANNOTATE_LOOP` macro, which is invoked before each
+loop associated with HMPP directives. This macro reads the contents of the HMPP
+directive associated with each loop from the data structure, and pastes the
+contents into a series of pragma statements. The tuple associated with the code
+listing above is given below.
 
 	#define LOOP_PARAMETERS                                            \
 		(                                                          \
