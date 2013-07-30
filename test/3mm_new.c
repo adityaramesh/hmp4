@@ -22,25 +22,25 @@
 
 //#include "../../../common/polybenchUtilFuncts.h"
 
-#define LOOP_A_PARAMETERS                              \
-	(                                              \
-		((grid blocksize, 32, 8), (parallel)), \
-		((parallel)),                          \
-		((unroll, 8, guarded), (noParallel))   \
+#define LOOP_A_PARAMETERS                               \
+	(                                               \
+		((grid blocksize, "32x8"), (parallel)), \
+		((parallel)),                           \
+		((unroll, 8, guarded), (noParallel))    \
 	)
 
-#define LOOP_B_PARAMETERS                              \
-	(                                              \
-		((grid blocksize, 32, 8), (parallel)), \
-		((parallel)),                          \
-		((unroll, 8, guarded), (noParallel))   \
+#define LOOP_B_PARAMETERS                               \
+	(                                               \
+		((grid blocksize, "32x8"), (parallel)), \
+		((parallel)),                           \
+		((unroll, 8, guarded), (noParallel))    \
 	)
 
-#define LOOP_C_PARAMETERS                              \
-	(                                              \
-		((grid blocksize, 32, 8), (parallel)), \
-		((parallel)),                          \
-		((unroll, 8, guarded), (noParallel))   \
+#define LOOP_C_PARAMETERS                               \
+	(                                               \
+		((grid blocksize, "32x8"), (parallel)), \
+		((parallel)),                           \
+		((unroll, 8, guarded), (noParallel))    \
 	)
 
 #define LOOP_PARAMETERS \
