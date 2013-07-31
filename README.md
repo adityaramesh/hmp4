@@ -7,12 +7,12 @@
 
 # Introduction
 
-`p5` is a tool intended to allow for the automatic insertion configuration
-pragma directives through the use of higher-order preprocessor directives. This
-tool makes it easy, for example, to change the loop configuration parameters in
-your HMPP kernels without manually changing the preprocessor directives in your
-code. If you are performing auto-tuning on C or C++ code using pragma-based
-utilities like HMPP, OpenACC, or OpenMP, then you probably need this library.
+`p5` is a library that enables automatic insertion configuration pragma
+directives through the use of higher-order preprocessor directives. This tool
+makes it easy, for example, to change the loop configuration parameters in your
+HMPP kernels without manually changing the preprocessor directives in your code.
+If you are performing auto-tuning on C or C++ code using pragma-based utilities
+like HMPP, OpenACC, or OpenMP, then you probably need this library.
 
 # Installation
 
