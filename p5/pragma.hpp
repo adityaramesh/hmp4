@@ -8,7 +8,7 @@
 #ifndef ZA76966E3_EF16_4EB0_9991_2F64F16ABC63
 #define ZA76966E3_EF16_4EB0_9991_2F64F16ABC63
 
-#define HMP4_PRAGMA(a) \
+#define P5_PRAGMA(a) \
 	_Pragma(a)
 
 #endif

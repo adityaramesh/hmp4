@@ -5,13 +5,13 @@
 ** Contact:	_@adityaramesh.com
 */
 
-#include <hmp4/annotate.hpp>
-#include <hmp4/tuple.hpp>
+#include <p5/annotate.hpp>
+#include <p5/tuple.hpp>
 
-//HMP4_PP_DEFINE(a,b,c)
-//HMP4_CG_GRID_BLOCKSIZE(3, 3)
-//HMP4_CG_NATIVE(CUDA, poop)
-//HMP4_CG_NO_PARALLEL
+//P5_PP_DEFINE(a,b,c)
+//P5_CG_GRID_BLOCKSIZE(3, 3)
+//P5_CG_NATIVE(CUDA, poop)
+//P5_CG_NO_PARALLEL
 
 #define LOOP_A_PARAMETERS                                          \
 	(                                                          \
@@ -20,4 +20,4 @@
 		("hmppcg unroll 8, guarded", "hmppcg noParallel")  \
 	)
 
-HMP4_ANNOTATE_LOOP(LOOP_A_PARAMETERS)
+P5_ANNOTATE_LOOP(LOOP_A_PARAMETERS)

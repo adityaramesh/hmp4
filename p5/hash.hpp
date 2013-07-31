@@ -10,7 +10,7 @@
 
 #include <boost/preprocessor/facilities/expand.hpp>
 
-#define HMP4_HASH #
-#define HMP4_PREPEND_HASH(a) BOOST_PP_EXPAND(HMP4_HASH)a
+#define P5_HASH #
+#define P5_PREPEND_HASH(a) BOOST_PP_EXPAND(P5_HASH)a
 
 #endif

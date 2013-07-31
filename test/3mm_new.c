@@ -17,8 +17,8 @@
 #include <math.h>
 
 // Note the extra headers.
-#include <hmp4/annotate.hpp>
-#include <hmp4/tuple.hpp>
+#include <p5/annotate.hpp>
+#include <p5/tuple.hpp>
 
 //#include "../../../common/polybenchUtilFuncts.h"
 
@@ -44,7 +44,7 @@
 	)
 
 #define LOOP_PARAMETERS \
-	HMP4_TUPLE_CAT(LOOP_A_PARAMETERS, LOOP_B_PARAMETERS, LOOP_C_PARAMETERS)
+	P5_TUPLE_CAT(LOOP_A_PARAMETERS, LOOP_B_PARAMETERS, LOOP_C_PARAMETERS)
 
 //define the error threshold for the results "not matching"
 #define PERCENT_DIFF_ERROR_THRESHOLD 0.05
@@ -71,15 +71,15 @@ void threeMMloopa(DATA_TYPE a[NI][NK], DATA_TYPE b[NK][NJ], DATA_TYPE e[NI][NJ])
 	int i, j, k;
 
 	/* E := A*B */
-	HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+	P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 	for (i = 0; i < NI; i++)
 	{
-		HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+		P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 		for (j = 0; j < NJ; j++)
 		{
 			e[i][j] = 0;
 
-			HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+			P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 			for (k = 0; k < NK; ++k)
 			{
 				e[i][j] += a[i][k] * b[k][j];
@@ -94,15 +94,15 @@ void threeMMloopb(DATA_TYPE c[NJ][NM], DATA_TYPE d[NM][NL], DATA_TYPE f[NJ][NL])
 	int i, j, k;
 
 	/* F := C*D */
-	HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+	P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 	for (i = 0; i < NJ; i++)
 	{
-		HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+		P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 		for (j = 0; j < NL; j++)
 		{
 			f[i][j] = 0;
 
-			HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+			P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 			for (k = 0; k < NM; ++k)
 			{
 				f[i][j] += c[i][k] * d[k][j];
@@ -117,15 +117,15 @@ void threeMMloopc(DATA_TYPE e[NI][NJ], DATA_TYPE f[NJ][NL], DATA_TYPE g[NI][NL])
 	int i, j, k;
 
 	/* G := E*F */
-	HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+	P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 	for (i = 0; i < NI; i++)
 	{
-		HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+		P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 		for (j = 0; j < NL; j++)
 		{
 			g[i][j] = 0;
 
-			HMP4_ANNOTATE_LOOP(LOOP_PARAMETERS)
+			P5_ANNOTATE_LOOP(LOOP_PARAMETERS)
 			for (k = 0; k < NJ; ++k)
 			{
 				g[i][j] += e[i][k] * f[k][j];

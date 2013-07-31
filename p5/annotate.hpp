@@ -21,31 +21,31 @@
 #include <boost/preprocessor/tuple/rem.hpp>
 #include <boost/preprocessor/tuple/size.hpp>
 #include <boost/preprocessor/tuple/to_seq.hpp>
-#include <hmp4/pragma.hpp>
+#include <p5/pragma.hpp>
 
-#define HMP4_ANNOTATE_LOOP(tuple) \
-	HMP4_ANNOTATE_LOOP_IMPL_1(__COUNTER__, tuple)
+#define P5_ANNOTATE_LOOP(tuple) \
+	P5_ANNOTATE_LOOP_IMPL_1(__COUNTER__, tuple)
 
-#define HMP4_ANNOTATE_LOOP_IMPL_1(n, tuple)                               \
-	HMP4_ANNOTATE_LOOP_IMPL_2(                                        \
+#define P5_ANNOTATE_LOOP_IMPL_1(n, tuple)                               \
+	P5_ANNOTATE_LOOP_IMPL_2(                                        \
 		BOOST_PP_TUPLE_ELEM(BOOST_PP_TUPLE_SIZE(tuple), n, tuple) \
 	)
 
-#define HMP4_PRED(r, state)                       \
+#define P5_PRED(r, state)                       \
 	BOOST_PP_NOT_EQUAL(                       \
 		BOOST_PP_TUPLE_ELEM(3, 0, state), \
 		BOOST_PP_TUPLE_ELEM(3, 1, state)  \
 	)
 
-#define HMP4_OP(r, state)                                       \
+#define P5_OP(r, state)                                       \
 	(                                                       \
 		BOOST_PP_INC(BOOST_PP_TUPLE_ELEM(3, 0, state)), \
 	  	BOOST_PP_TUPLE_ELEM(3, 1, state),               \
 	  	BOOST_PP_TUPLE_ELEM(3, 2, state)                \
 	)
 
-#define HMP4_MACRO(r, state)                                     \
-	HMP4_MACRO_IMPL_1(                                       \
+#define P5_MACRO(r, state)                                     \
+	P5_MACRO_IMPL_1(                                       \
 		BOOST_PP_TUPLE_ELEM(                             \
 			BOOST_PP_TUPLE_SIZE(                     \
 				BOOST_PP_TUPLE_ELEM(3, 2, state) \
@@ -55,12 +55,12 @@
 		)                                                \
 	)
 
-#define HMP4_MACRO_IMPL_1(a) HMP4_PRAGMA(a)
+#define P5_MACRO_IMPL_1(a) P5_PRAGMA(a)
 
-#define HMP4_ANNOTATE_LOOP_IMPL_2(tuple)                \
+#define P5_ANNOTATE_LOOP_IMPL_2(tuple)                \
 	BOOST_PP_FOR(                                   \
 		(0, BOOST_PP_TUPLE_SIZE(tuple), tuple), \
-		HMP4_PRED, HMP4_OP, HMP4_MACRO          \
+		P5_PRED, P5_OP, P5_MACRO          \
 	)
 
 #endif
