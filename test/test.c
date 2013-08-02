@@ -5,13 +5,13 @@
 ** Contact:	_@adityaramesh.com
 */
 
-#include <p5/annotate.hpp>
+#include <p5/hmpp.hpp>
 #include <p5/tuple.hpp>
 
-//P5_PP_DEFINE(a,b,c)
-//P5_CG_GRID_BLOCKSIZE(3, 3)
-//P5_CG_NATIVE(CUDA, poop)
-//P5_CG_NO_PARALLEL
+//P5_HMPP_DEFINE(a,b,c)
+//P5_HMPPCG_GRID_BLOCKSIZE(3, 3)
+//P5_HMPPCG_NATIVE(CUDA, poop)
+//P5_HMPPCG_NO_PARALLEL
 
 #define LOOP_A_PARAMETERS                                          \
 	(                                                          \
