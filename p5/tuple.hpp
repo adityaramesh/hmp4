@@ -10,10 +10,10 @@
 
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/tuple/rem.hpp>
-#include <p5/count.hpp>
+#include <p5/variadic_size.hpp>
 
 #define P5_TUPLE_CAT(...) \
-	BOOST_PP_CAT(P5_TUPLE_CAT_IMPL_, P5_COUNT(__VA_ARGS__))(__VA_ARGS__)
+	BOOST_PP_CAT(P5_TUPLE_CAT_IMPL_, P5_VARIADIC_SIZE(__VA_ARGS__))(__VA_ARGS__)
 
 #define P5_TUPLE_CAT_IMPL_2(a, b) \
 	(BOOST_PP_TUPLE_REM()a, BOOST_PP_TUPLE_REM()b)

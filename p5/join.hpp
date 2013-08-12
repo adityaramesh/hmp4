@@ -9,10 +9,10 @@
 #define Z49F44B79_CC97_455D_9620_76903441B475
 
 #include <boost/preprocessor/cat.hpp>
-#include <p5/count.hpp>
+#include <p5/variadic_size.hpp>
 
 #define P5_JOIN(...) \
-	BOOST_PP_CAT(P5_JOIN_IMPL_, P5_COUNT(__VA_ARGS__))(__VA_ARGS__)
+	BOOST_PP_CAT(P5_JOIN_IMPL_, P5_VARIADIC_SIZE(__VA_ARGS__))(__VA_ARGS__)
 
 #define P5_JOIN_IMPL_0(...)
 
